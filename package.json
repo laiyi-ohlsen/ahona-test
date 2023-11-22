@@ -1,0 +1,27 @@
+{
+  "name": "web_service",
+  "version": "1.0.0",
+  "description": "rock paper scissors 2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "develop": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahonapaul/web_services.git"
+  },
+  "author": "Ahona Paul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahonapaul/web_services/issues"
+  },
+  "homepage": "https://github.com/ahonapaul/web_services#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fake-person": "^1.2.1",
+    "nodemon": "^3.0.1"
+  },
+  "type": "module"
+}
