@@ -23,6 +23,8 @@ app.get('/myChoice/:key', (req, res) => {
 
     let playerchoice = req.params.key;
 
+    let resultArray = ["{computer: " + aiChoice + " | player: " + playerchoice + "}"]
+
     let counter = []; //to keep track of score
     let score = 0;
 
@@ -34,21 +36,21 @@ app.get('/myChoice/:key', (req, res) => {
     if(playerchoice==rock&&aiChoice==paper || playerchoice==paper&&aiChoice==scissors || playerchoice==scissors&&aiChoice==rock){
         score = score - 1;
         counter.push(score);
-        res.send(`The score is ${counter}`);
+        res.send(`The score is ${counter} ` + resultArray );
     }
 
     //winning statement
     if(playerchoice==rock&&aiChoice==scissors || playerchoice==paper&&aiChoice==rock || playerchoice==scissors&&aiChoice==paper){
         score = score + 1;
         counter.push(score);
-        res.send(`The score is ${counter}`);
+        res.send(`The score is ${counter} ` + resultArray);
     }
 
     //draw statement
     if(playerchoice == aiChoice){
         score = score;
         counter.push(score);
-        res.send(`The score is ${counter}`);
+        res.send(`The score is ${counter} ` + resultArray);
     }
 
     //invalid
