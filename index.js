@@ -2,10 +2,16 @@ import express from 'express';
 
 import FakePerson from 'fake-person';
 
+import cors from 'cors';
+
 const app = express();
 const player = new FakePerson();
 
 const port = process.env.PORT || 5001
+
+app.use(cors({
+    origin: '*'
+}));
 
 
 app.get('/', (req, res) => {
