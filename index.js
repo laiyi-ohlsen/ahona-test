@@ -23,8 +23,6 @@ app.get('/myChoice/:key', (req, res) => {
 
     let playerchoice = req.params.key;
 
-    res.send({computer: aiChoice, playerchoice});
-
     let counter = []; //to keep track of score
     let score = 0;
 
@@ -36,31 +34,31 @@ app.get('/myChoice/:key', (req, res) => {
     if(playerchoice==rock&&aiChoice==paper || playerchoice==paper&&aiChoice==scissors || playerchoice==scissors&&aiChoice==rock){
         score = score - 1;
         counter.push(score);
-        console.log(`The score is ${counter}`);
+        res.send(`The score is ${counter}`);
     }
 
     //winning statement
     if(playerchoice==rock&&aiChoice==scissors || playerchoice==paper&&aiChoice==rock || playerchoice==scissors&&aiChoice==paper){
         score = score + 1;
         counter.push(score);
-        console.log(`The score is ${counter}`);
+        res.send(`The score is ${counter}`);
     }
 
     //draw statement
     if(playerchoice == aiChoice){
         score = score;
         counter.push(score);
-        console.log(`The score is ${counter}`);
+        res.send(`The score is ${counter}`);
     }
 
     //invalid
     if(playerchoice!==rock && playerchoice!==paper && playerchoice!==scissors){
-        console.log("Error, please choose rock, paper or scissors");
+        res.send("Error, please choose rock, paper or scissors");
     }
 });
 
 
-//work on results page and link to score (global variable?)
+// work on results page and link to score (global variable?)
 // app.get('/results', (req, res) =>{
 //     if(score == 0){
 //         console.log("tied");
