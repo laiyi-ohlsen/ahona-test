@@ -15,7 +15,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-    res.send("Choose rock, paper or scissors, and type it into the search bar in this format: /myChoice/rock");
+    res.send("Choose rock, paper or scissors, and type it into the search bar in this format: /myChoice/rock. \n Once you get your score, type in results/yourscore after the original URL (with your score being the number you get after playing) to get a fortune!");
 })
 
 app.get('/myChoice/:key', (req, res) => {
@@ -60,18 +60,20 @@ app.get('/myChoice/:key', (req, res) => {
 });
 
 
-// work on results page and link to score (global variable?)
-// app.get('/results', (req, res) =>{
-//     if(score == 0){
-//         console.log("tied");
-//     }
-//     if(score == 1){
-//         console.log("win");
-//     }
-//     if(score == -1){
-//         console.log("lose");
-//     }
-// })
+app.get('/results/:key', (req, res) =>{
+
+    let score = req.params.key;
+
+    if(score == 0){
+        res.send("tied");
+    }
+    if(score == 1){
+        res.send("win");
+    }
+    if(score == -1){
+        res.send("lose");
+    }
+})
 
 app.listen(port, () => {
     console.log(`Game starts on port ${port}`)
