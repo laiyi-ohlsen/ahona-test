@@ -36,26 +36,26 @@ app.get('/myChoice/:key', (req, res) => {
     if(playerchoice==rock&&aiChoice==paper || playerchoice==paper&&aiChoice==scissors || playerchoice==scissors&&aiChoice==rock){
         score = score - 1;
         counter.push(score);
-        res.send(`The score is ${counter} ` + resultArray );
+        res.json(`The score is ${counter} ` + resultArray );
     }
 
     //winning statement
     if(playerchoice==rock&&aiChoice==scissors || playerchoice==paper&&aiChoice==rock || playerchoice==scissors&&aiChoice==paper){
         score = score + 1;
         counter.push(score);
-        res.send(`The score is ${counter} ` + resultArray);
+        res.json(`The score is ${counter} ` + resultArray);
     }
 
     //draw statement
     if(playerchoice == aiChoice){
         score = score;
         counter.push(score);
-        res.send(`The score is ${counter} ` + resultArray);
+        res.json(`The score is ${counter} ` + resultArray);
     }
 
     //invalid
     if(playerchoice!==rock && playerchoice!==paper && playerchoice!==scissors){
-        res.send("Error, please choose rock, paper or scissors");
+        res.json("Error, please choose rock, paper or scissors");
     }
 });
 
@@ -65,13 +65,13 @@ app.get('/results/:key', (req, res) =>{
     let score = req.params.key;
 
     if(score == 0){
-        res.send("tied");
+        res.json("tied");
     }
     if(score == 1){
-        res.send("win");
+        res.json("win");
     }
     if(score == -1){
-        res.send("lose");
+        res.json("lose");
     }
 })
 
